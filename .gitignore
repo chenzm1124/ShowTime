@@ -56,3 +56,6 @@ _build*
 *apiKey*.csv
 *.private.config.json
 project.private.config.json
+
+# CodeBuddy 项目数据（本地 AI 计划文件，不提交）
+.codebuddy/
