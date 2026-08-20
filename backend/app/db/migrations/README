@@ -1,0 +1,28 @@
+# 数据库迁移
+
+本目录由 Alembic 自动管理。
+
+## 常用命令
+
+```bash
+# 生成迁移（基于 ORM 变更）
+alembic revision --autogenerate -m "描述"
+
+# 升级到最新版本
+alembic upgrade head
+
+# 降级一个版本
+alembic downgrade -1
+
+# 查看当前版本
+alembic current
+
+# 查看迁移历史
+alembic history --verbose
+```
+
+## 注意事项
+
+- 提交前务必人工 review 自动生成的迁移文件
+- 生产环境必须先在 staging 跑通再执行
+- 数据迁移（如字段重命名）使用 `op.alter_column` 而非删 + 增

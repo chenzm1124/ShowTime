@@ -1,0 +1,81 @@
+version: "3.8"
+
+# =====================================================
+# 途吖 · 旅行照片AI处理工具 - 本地开发编排
+#
+# 启动：  docker compose up -d
+# 停止：  docker compose down
+# 重启：  docker compose restart backend
+# 日志：  docker compose logs -f backend
+# 初始化：docker compose exec backend python -m scripts.init_db --seed
+# =====================================================
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: travelphoto-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: travelphoto
+      POSTGRES_PASSWORD: travelphoto
+      POSTGRES_DB: travelphoto
+      # 让 PG 接受更宽松的连接（开发用）
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U travelphoto -d travelphoto"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: travelphoto-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: travelphoto-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      # 容器内部通过 service name 访问
+      DATABASE_URL: postgresql+asyncpg://travelphoto:travelphoto@postgres:5432/travelphoto
+      DATABASE_URL_SYNC: postgresql://travelphoto:travelphoto@postgres:5432/travelphoto
+      REDIS_URL: redis://redis:6379/0
+      APP_ENV: development
+      APP_DEBUG: "true"
+      LOG_LEVEL: INFO
+      CORS_ORIGINS: "*"  # 开发允许所有来源
+      ENABLE_MOCK_MODE: "true"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "python -m scripts.init_db --seed &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+volumes:
+  postgres_data:
+    name: travelphoto_postgres_data
+  redis_data:
+    name: travelphoto_redis_data

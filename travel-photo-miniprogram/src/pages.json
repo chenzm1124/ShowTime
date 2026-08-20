@@ -1,0 +1,119 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^tp-(.*)": "@/components/tp-$1/tp-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "图轻松",
+        "navigationBarBackgroundColor": "#FFA726",
+        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/history/history",
+      "style": {
+        "navigationBarTitleText": "出图历史",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black"
+      }
+    },
+
+    {
+      "path": "pages/upload/upload",
+      "style": {
+        "navigationBarTitleText": "上传照片",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/retouching/retouching",
+      "style": {
+        "navigationBarTitleText": "精修处理中",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/result/result",
+      "style": {
+        "navigationBarTitleText": "精修结果",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/caption/caption",
+      "style": {
+        "navigationBarTitleText": "选择文案",
+        "navigationStyle": "custom"
+      }
+    },
+
+    {
+      "path": "pages/quota/quota",
+      "style": {
+        "navigationBarTitleText": "我的额度",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/preview/preview",
+      "style": {
+        "navigationBarTitleText": "查看大图",
+        "navigationStyle": "custom",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/screen-preview/screen-preview",
+      "style": {
+        "navigationBarTitleText": "筛选结果确认",
+        "navigationStyle": "custom"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "图轻松",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#F5F5F5"
+  },
+  "tabBar": {
+    "color": "#555555",
+    "selectedColor": "#FFA726",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "智能出图",
+        "iconPath": "static/tabbar/photo.png",
+        "selectedIconPath": "static/tabbar/photo_active.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "出图历史",
+        "iconPath": "static/tabbar/history.png",
+        "selectedIconPath": "static/tabbar/history_active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "static/tabbar/mine.png",
+        "selectedIconPath": "static/tabbar/mine_active.png"
+      }
+    ]
+  }
+}

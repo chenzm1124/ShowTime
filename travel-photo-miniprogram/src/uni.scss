@@ -1,0 +1,76 @@
+/**
+* 全局样式变量 - 图轻松
+*
+* 视觉风格：桃花粉少女风（粉/白主调，圆润 + emoji 装饰）
+* - 主色：桃花粉（亮、暗、浅三阶，用于按钮 / 强调 / 高亮）
+* - 背景：纯白 + 极浅粉
+* - 文字：深黑 / 中灰 / 浅灰
+*/
+
+// ========== 主色调：桃花粉 ==========
+$primary: #FFA726;          // 桃粉主色
+$primary-light: #FFCC80;    // 浅桃粉（高亮/渐变上端）
+$primary-dark: #FB8C00;     // 深桃粉（按下态/渐变下端）
+$primary-bg: #FFF3E0;       // 极浅粉（背景块/卡片填充）
+
+// 副色：保留 secondary 作为「点缀粉」（与 primary 同色系，不喧宾夺主）
+$secondary: #FFB74D;
+$secondary-light: #FFE0B2;
+$secondary-dark: #F57C00;
+
+// 点缀色（桃花粉少女风的「暖橙」用作高光，谨慎使用）
+$accent: #FFB74D;
+$accent-green: #FFCDD2;
+
+// ========== 中性色（黑 / 白 / 灰） ==========
+$text-primary: #1A1A1A;     // 主文字：近黑
+$text-secondary: #555555;   // 副文字：中灰
+$text-tertiary: #9E9E9E;    // 三级文字：浅灰
+
+$bg-primary: #FFFFFF;       // 卡片/主背景：纯白
+$bg-secondary: #F5F5F5;     // 页面背景：浅灰白
+$bg-tertiary: #E0E0E0;      // 占位/禁用背景
+
+$border-color: #D0D0D0;     // 边框：中浅灰
+$divider: #E0E0E0;
+
+// 状态色（保留语义色，但向科技绿靠拢）
+$success: #FFA726;          // 与主色一致
+$warning: #FFB300;
+$error: #D50000;
+$info: #00B8D4;
+
+// ========== 字体 ==========
+$font-size-xs: 22rpx;
+$font-size-sm: 24rpx;
+$font-size-base: 28rpx;
+$font-size-md: 30rpx;
+$font-size-lg: 32rpx;
+$font-size-xl: 36rpx;
+$font-size-xxl: 44rpx;
+
+// ========== 间距 ==========
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-md: 24rpx;
+$spacing-lg: 32rpx;
+$spacing-xl: 48rpx;
+
+// ========== 圆角（科技像素风：整体偏小，硬朗感） ==========
+$radius-sm: 4rpx;           // 极小圆角（接近直角）
+$radius-md: 8rpx;           // 卡片默认
+$radius-lg: 12rpx;          // 大卡片
+$radius-xl: 16rpx;          // 弹窗等
+
+// ========== 阴影（科技像素风：阴影更硬、更短，偏「电子屏」感） ==========
+$shadow-sm: 0 2rpx 4rpx rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4rpx 8rpx rgba(0, 0, 0, 0.10);
+$shadow-lg: 0 6rpx 16rpx rgba(0, 0, 0, 0.14);
+
+// ========== 像素风专属 ==========
+// 像素描边：1rpx 实线，用于卡片轮廓强化「电子屏」感
+$pixel-border: 2rpx solid $text-primary;
+// 像素阴影：无模糊的硬阴影（offset only）
+$pixel-shadow: 4rpx 4rpx 0 $text-primary;
+// 像素高光：内描边模拟 LCD 像素亮边
+$pixel-inset: inset 0 0 0 2rpx $primary-light;

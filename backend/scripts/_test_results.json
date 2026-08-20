@@ -1,0 +1,177 @@
+[
+  {
+    "id": "TC-101",
+    "name": "正常列出 3 个上架包",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-102",
+    "name": "字段完整性校验",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-103",
+    "name": "价格单位校验（分→元）",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-104",
+    "name": "features 数组正确解析",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-201",
+    "name": "mock 模式购买 daily 包",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-202",
+    "name": "mock 模式购买 enjoy 包",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-203",
+    "name": "mock 模式购买 unlimited 包",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-204",
+    "name": "订单号格式校验",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-205",
+    "name": "同时返回套餐快照",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-206",
+    "name": "非法 pack_code 被 Pydantic 拦截",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-207",
+    "name": "缺字段校验",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-301a",
+    "name": "free 用户买包后 source 切换为 pack",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-302",
+    "name": "user_packs 列表字段完整",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-303",
+    "name": "多包叠加取最大张数",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-304",
+    "name": "包过期后切回 trial",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-305",
+    "name": "DB 状态重置（test fixture）",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-401",
+    "name": "正常扣减 1 次",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-402",
+    "name": "连续扣减到 0（状态变 exhausted）",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-403",
+    "name": "用完后再扣返回 400",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-404",
+    "name": "不存在的 user_pack_id",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-405",
+    "name": "跨用户保护（用其他用户 token 不能扣）",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-406",
+    "name": "缺字段校验",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-501",
+    "name": "完整链路：买→查→扣→扣完→查 source 切换",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-502",
+    "name": "quota_log 写入校验（PACK_PURCHASE + PACK_CONSUME）",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  },
+  {
+    "id": "TC-503",
+    "name": "微信支付回调当前 501（生产待 WBS 2.x）",
+    "status": "PASS",
+    "detail": "",
+    "time": "2026-07-07T23:14:08"
+  }
+]

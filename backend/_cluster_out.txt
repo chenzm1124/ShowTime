@@ -1,0 +1,26 @@
+﻿============================================================
+P1/P2 Unit Test: Qwen Embedding + Hash OR Vote + Merge
+============================================================
+
+[1] _cluster_by_hash
+  cluster 0: ['p1', 'p2', 'p3', 'p4', 'p5']
+  cluster 1: ['p6']
+
+[2] _cluster_by_embedding
+  cluster 0: ['p1', 'p2']
+  cluster 1: ['p3', 'p4']
+  cluster 2: ['p5']
+  cluster 3: ['p6']
+
+[3] _merge_clusters
+  mapping: {'p1': 0, 'p2': 0, 'p3': 0, 'p4': 0, 'p5': 0, 'p6': 1}
+  total groups: 2
+
+[4] cosine_similarity sanity
+  similar: 0.9949
+  orthogonal: 0.0000
+  opposite: -1.0000
+
+============================================================
+DONE
+============================================================

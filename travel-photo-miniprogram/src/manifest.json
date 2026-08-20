@@ -1,0 +1,41 @@
+{
+  "name": "图轻松",
+  "appid": "",
+  "description": "轻松搞定朋友圈图文，就用图轻松",
+  "versionName": "0.3.0",
+  "versionCode": "200",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "touristappid",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "postcss": true,
+      "minified": true,
+      "babelSetting": {
+        "ignore": [],
+        "disablePlugins": [],
+        "outputPath": ""
+      }
+    },
+    "usingComponents": true,
+    "optimization": {
+      "subPackages": true
+    },
+    "requiredPrivateInfos": ["chooseAddress", "chooseLocation"],
+    "permission": {
+      "scope.userLocation": {
+        "desc": "用于识别照片拍摄地点，生成更精准的文案"
+      }
+    },
+    "lazyCodeLoading": "requiredComponents"
+  },
+  "h5": {
+    "router": {
+      "mode": "hash"
+    },
+    "devServer": {
+      "port": 5174
+    }
+  }
+}

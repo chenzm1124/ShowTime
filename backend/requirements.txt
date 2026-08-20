@@ -1,0 +1,41 @@
+# 后端依赖（开发用）
+# 安装：pip install -r requirements.txt
+
+# Web 框架
+fastapi[standard]>=0.115.0
+uvicorn[standard]>=0.32.0
+
+# 配置 & 校验
+pydantic>=2.9.0
+pydantic-settings>=2.6.0
+
+# 数据库
+sqlalchemy[asyncio]>=2.0.36
+asyncpg>=0.30.0
+alembic>=1.14.0
+
+# Redis（mock 模式可选）
+redis>=5.2.0
+
+# 鉴权
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# 工具
+python-multipart>=0.0.18
+loguru>=0.7.0
+orjson>=3.10.0
+httpx>=0.27.0
+
+# 腾讯云 COS 对象存储
+cos-python-sdk-v5>=1.9.0
+
+# 图像质量评估（本地 CV 基线：模糊/曝光/去重哈希）
+numpy>=1.26.0
+Pillow>=10.0.0
+
+# 阿里云视觉智能开放平台（IQA + 人脸检测 RPC 调用）
+aliyun-python-sdk-core>=2.15.0
+
+# 测试
+pytest>=8.0.0

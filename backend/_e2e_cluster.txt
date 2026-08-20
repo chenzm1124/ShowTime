@@ -1,0 +1,74 @@
+﻿LLM_API_KEY configured: True (len=115)
+CLUSTER_USE_QWEN_EMBEDDING: True
+CLUSTER_QWEN_SIM_THRESHOLD: 0.7
+
+============================================================
+Synthesized 6 test images:
+  - p1_person_a_flower
+  - p2_person_a_sunset
+  - p3_person_a_indoor
+  - p4_person_a_snow
+  - p5_person_b
+  - p6_sea
+
+============================================================
+Step 1: Multi-hash distances (only aHash / dHash / pHash)
+============================================================
+                     | p1_perso | p2_perso | p3_perso | p4_perso | p5_perso |   p6_sea
+  -------------------+------------------------------------------------------------------
+  ahash              |     .       46     4*    0*    6*   42  |   46      .       50    46    46    40  |    4*   50      .        4*   10*   38  |    0*   46     4*     .        6*   42  |    6*   46    10*    6*     .       38  |   42    40    38    42    38      .    
+  dhash              |     .       18    16     6*   25    30  |   18      .       30    16    27    30  |   16    30      .       14    23    26  |    6*   16    14      .       23    28  |   25    27    23    23      .       23  |   30    30    26    28    23      .    
+  phash              |     .       22     6*    4*   28    34  |   22      .       26    22    26    36  |    6*   26      .        4*   28    36  |    4*   22     4*     .       28    34  |   28    26    28    28      .       30  |   34    36    36    34    30      .    
+
+  Note: * means hash-distance <= threshold (would be clustered same group)
+  Thresholds: ahash=10, dhash=12, phash=14
+
+============================================================
+Step 2: Qwen multimodal-embedding-v1
+============================================================
+
+  Got 6/6 embeddings
+
+============================================================
+Step 3: Cosine similarity matrix
+============================================================
+                     | p1_perso | p2_perso | p3_perso | p4_perso | p5_perso |   p6_sea
+  -------------------+------------------------------------------------------------------
+  p1_person_a_flower |    1.000 |   0.817 |   0.724 |   0.794 |   0.718 |   0.316
+  p2_person_a_sunset |   0.817 |    1.000 |   0.771 |   0.865 |   0.724 |   0.446
+  p3_person_a_indoor |   0.724 |   0.771 |    1.000 |   0.826 |   0.815 |   0.412
+  p4_person_a_snow   |   0.794 |   0.865 |   0.826 |    1.000 |   0.762 |   0.413
+  p5_person_b        |   0.718 |   0.724 |   0.815 |   0.762 |    1.000 |   0.443
+  p6_sea             |   0.316 |   0.446 |   0.412 |   0.413 |   0.443 |    1.000
+
+  Threshold: cosine_sim >= 0.7 -> same group
+
+============================================================
+Step 4: Cluster comparison (hash-only vs hash+embedding)
+============================================================
+
+  [A] Only multi-hash (aHash+dHash+pHash OR vote):
+    cluster 0: ['p1_person_a_flower', 'p3_person_a_indoor', 'p4_person_a_snow', 'p5_person_b']
+    cluster 1: ['p2_person_a_sunset']
+    cluster 2: ['p6_sea']
+
+  [B] Embedding only (cosine >= 0.7 + Union-Find):
+    cluster 0: ['p1_person_a_flower', 'p2_person_a_sunset', 'p3_person_a_indoor', 'p4_person_a_snow', 'p5_person_b']
+    cluster 1: ['p6_sea']
+
+  [C] Combined (hash OR embedding):
+    cluster 0: ['p1_person_a_flower', 'p2_person_a_sunset', 'p3_person_a_indoor', 'p4_person_a_snow', 'p5_person_b']
+    cluster 1: ['p6_sea']
+    TOTAL: 2 groups
+
+============================================================
+Summary
+============================================================
+  Expected: 3 groups (person A x4 / person B / sea)
+  Hash-only: 3 groups
+  Embedding-only: 2 groups
+  Combined: 2 groups
+
+  Group breakdown:
+    0: ['p1_person_a_flower', 'p2_person_a_sunset', 'p3_person_a_indoor', 'p4_person_a_snow', 'p5_person_b'] -> Person B
+    1: ['p6_sea'] -> Other

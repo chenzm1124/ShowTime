@@ -1,0 +1,35 @@
+﻿============================================================
+P0 Unit Test: 3-Hash OR Voting Cluster
+============================================================
+
+[1] Identical images -> same group expected
+  distances: {'ahash': 0, 'dhash': 0, 'phash': 0}
+  Result: PASS (vote_same=True)
+
+[2] Same person + bright->dark background
+  distances: {'ahash': 1, 'dhash': 15, 'phash': 16}
+  vote_same = True
+  ahash_hit=True, phash_hit=False
+  Result: FAIL
+
+[3] Same person + slight crop
+  distances: {'ahash': 1, 'dhash': 18, 'phash': 18}
+  vote_same = True
+  hits: ['ahash']
+  Result: PASS
+
+[4] Completely different scenes -> different groups expected
+  face vs city distances: {'ahash': 35, 'dhash': 22, 'phash': 32}
+  vote_same (face, city) = False
+  vote_same (face, sea) = False
+  Result: PASS
+
+============================================================
+P0 Unit Test Summary
+============================================================
+  Test 1 identical: PASS
+  Test 2 bright->dark: FAIL
+  Test 3 slight crop: PASS
+  Test 4 diff scenes: PASS
+
+  OVERALL: SOME FAILED
