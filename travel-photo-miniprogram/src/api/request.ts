@@ -13,7 +13,13 @@ import { useUserStore } from '@/stores/user'
 // 即使勾选了「不校验合法域名」也无效——localhost 根本不在「合法域名」概念里。
 // 用 127.0.0.1 才能直接绕过这个限制。
 const isDev = (typeof process !== 'undefined' && process.env && process.env.NODE_ENV) !== 'production'
-export const BASE_URL = isDev ? 'http://127.0.0.1:8000' : 'https://api.travelphotoai.com'
+
+// ⚠️ 生产环境后端地址（发布前必须替换成你的真实公网 HTTPS 域名）
+// 该域名需在小程序后台「开发管理 → 开发设置 → 服务器域名」登记为 request 合法域名，
+// 且必须是 HTTPS。部署后端后，只需改这一行即可。
+export const PROD_BASE_URL = 'https://api.example.com'
+
+export const BASE_URL = isDev ? 'http://127.0.0.1:8000' : PROD_BASE_URL
 
 interface RequestOptions {
   url: string

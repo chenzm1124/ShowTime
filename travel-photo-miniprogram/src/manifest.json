@@ -6,7 +6,7 @@
   "versionCode": "200",
   "transformPx": false,
   "mp-weixin": {
-    "appid": "touristappid",
+    "appid": "wxc934e502d1a046a7",
     "setting": {
       "urlCheck": false,
       "es6": true,
@@ -28,7 +28,9 @@
         "desc": "用于识别照片拍摄地点，生成更精准的文案"
       }
     },
-    "lazyCodeLoading": "requiredComponents"
+    "lazyCodeLoading": "requiredComponents",
+    "requiredPrivateInfos": [],
+    "permission": {}
   },
   "h5": {
     "router": {
