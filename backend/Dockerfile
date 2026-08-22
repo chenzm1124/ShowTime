@@ -34,5 +34,5 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-# 启动命令（开发模式，生产建议用 gunicorn + uvicorn worker）
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# 启动命令（生产模式：无 --reload 热重载；需要更高并发时可用 gunicorn 替换）
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

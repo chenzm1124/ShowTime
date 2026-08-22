@@ -1,13 +1,17 @@
 version: "3.8"
 
 # =====================================================
-# 途吖 · 旅行照片AI处理工具 - 本地开发编排
+# 途吖 · 旅行照片AI处理工具 - 部署编排（生产）
 #
 # 启动：  docker compose up -d
 # 停止：  docker compose down
 # 重启：  docker compose restart backend
 # 日志：  docker compose logs -f backend
-# 初始化：docker compose exec backend python -m scripts.init_db --seed
+#
+# 说明：
+# - postgres / redis / backend 一并编排，backend 启动会自动 alembic 建表 + seed
+# - 已设为 production + 关闭 mock，切勿改回 development
+# - 上线还需在前方加 Nginx 反代并配置 HTTPS 域名（见部署文档）
 # =====================================================
 
 services:
@@ -61,18 +65,21 @@ services:
       DATABASE_URL: postgresql+asyncpg://travelphoto:travelphoto@postgres:5432/travelphoto
       DATABASE_URL_SYNC: postgresql://travelphoto:travelphoto@postgres:5432/travelphoto
       REDIS_URL: redis://redis:6379/0
-      APP_ENV: development
-      APP_DEBUG: "true"
+      # ⚠️ 生产配置：必须 production + mock 关闭
+      APP_ENV: production
+      APP_DEBUG: "false"
       LOG_LEVEL: INFO
-      CORS_ORIGINS: "*"  # 开发允许所有来源
-      ENABLE_MOCK_MODE: "true"
+      # 上线后改为你的小程序后台「服务器域名」里的 Web 域名（如有 Web 管理端）；
+      # 微信小程序走 wx.request 不校验 CORS，此项主要影响管理后台。
+      CORS_ORIGINS: "*"
+      # ⚠️ 生产必须 false，否则微信登录/支付/AI 流水线全走假数据
+      ENABLE_MOCK_MODE: "false"
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend:/app
+    # 生产不挂载本地源码，使用镜像内打包的代码
     command: >
       sh -c "python -m scripts.init_db --seed &&
-             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
 
 volumes:
   postgres_data:
