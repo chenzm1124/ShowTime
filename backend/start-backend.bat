@@ -160,6 +160,9 @@ if %ERRORLEVEL%==0 (
 echo.
 echo [3/5] 建表 + 跑 seed 数据 ...
 echo   用 init_db.py 一把搞定（建表 + 写 VIP/次数包/测试用户）
+echo   ⚠️ 注意：--use-metadata 走 metadata.create_all（开发快速建表，仅本地联调用）。
+echo      生产环境请改用 docker-compose（默认走 Alembic 迁移）或手动执行：
+echo      python -m scripts.init_db --seed
 python -m scripts.init_db --use-metadata --seed
 if %ERRORLEVEL% NEQ 0 (
     echo   警告: init_db 失败，但继续启动后端 ...
