@@ -74,6 +74,8 @@ services:
       CORS_ORIGINS: "*"
       # ⚠️ 生产必须 false，否则微信登录/支付/AI 流水线全走假数据
       ENABLE_MOCK_MODE: "false"
+      # 本地自测占位密钥（生产请改用环境变量/secret 注入真实随机串，至少32位）
+      SECRET_KEY: "local-dev-only-secret-key-please-change-in-production-32+"
     ports:
       - "8000:8000"
     # 生产不挂载本地源码，使用镜像内打包的代码
